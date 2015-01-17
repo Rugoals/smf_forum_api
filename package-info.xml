@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>Rugoals:Forum-api</id>
+	<name>Forum API</name>
+	<version>0.2</version>
+	<type>modification</type>
+	
+	<install for="2.0 - 2.0.99">
+		<readme parsebbc="true">readme.txt</readme> 
+		<require-dir name="default/languages" destination="$themedir" /> 
+		<require-file name="default/Forum-api.template.php" destination="$themedir" />
+		<require-file name="core/Subs-Forum-api.php" destination="$sourcedir" />
+		<code>hook/install.php</code>
+		<redirect url="$scripturl?action=admin;area=modsettings" timeout="1000" />
+	</install>
+	
+	<uninstall for="2.0 - 2.0.99">
+		<code>hook/uninstall.php</code>  
+		<remove-file name="$sourcedir/Subs-Forum-api.php" />
+		<remove-file name="$themedir/Forum-api.template.php" />
+		<remove-dir name="$languagedir/Forum-api.russian.php" /> 
+		<remove-dir name="$languagedir/Forum-api.russian-utf8.php" /> 
+		<redirect url="$scripturl?action=admin;area=packages;sa=browse" timeout="1000" />
+	</uninstall>
+	
+</package-info>
